@@ -1,3 +1,4 @@
+import { WineOff } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 // id, size, x, y, opacity, animationDuration
@@ -25,8 +26,18 @@ const StarBackground = () => {
   useEffect(() => {
     generateStars();
     generateMeteors();
+
+    const handldeResize = () => {
+      generateStars();
+    };
+
+    window.addEventListener('resize', handldeResize)
+
+    return ()=>window.removeEventListener('resize', handldeResize);
+
   }, []);
 
+  
   const generateStars = () => {
     const numberOfStars: number = Math.floor(
       (window.innerWidth * window.innerHeight) / 10000,
