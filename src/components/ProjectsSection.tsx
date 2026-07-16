@@ -6,6 +6,7 @@ import {
   GitBranchIcon,
 } from "lucide-react";
 import React from "react";
+import { FaGithub } from "react-icons/fa";
 
 interface project {
   id: number;
@@ -102,7 +103,7 @@ const ProjectsSection = () => {
                       target="_blank"
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
-                      <FolderGit size={20} />{" "}
+                      <FaGithub size={20} />{" "}
                     </a>
                   </div>
                 </div>
