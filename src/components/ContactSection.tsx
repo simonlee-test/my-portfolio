@@ -1,16 +1,28 @@
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { FaInstagram, FaLinkedin, FaTwitch } from "react-icons/fa";
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "../lib/utils";
 import {  FaXTwitter } from "react-icons/fa6";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
-  const handleSubmit = (e: Event)=>{
+  const {toast} = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setIsSubmitting(true);
+
     setTimeout(()=>{
-      
-    }, 1500)
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message, I'll get back to you soon"
+      })
+      setIsSubmitting(false);
+    }, 1500);
+    
   }
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -89,7 +101,7 @@ const ContactSection = () => {
           </div>
           <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
@@ -140,10 +152,10 @@ const ContactSection = () => {
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>
-              <button type="submit" className={cn("cosmic-button w-full flex items-center justify-center gap-2",
+              <button type="submit" disabled={isSubmitting} className={cn("cosmic-button w-full flex items-center justify-center gap-2",
 
               )}>
-                Send Message
+                {isSubmitting ? "Sending...":"Send Message"}
                 <Send size={16}/>
               </button>
             </form>
