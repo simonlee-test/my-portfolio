@@ -8,7 +8,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
@@ -34,7 +34,7 @@ const Navbar = () => {
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
         isScrolled
-          ? "py--3 bg-background/80 backdrop-blur-md shadow-xs"
+          ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
           : "py-5",
       )}
     >
