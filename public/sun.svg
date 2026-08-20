@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Base 8-pointed star shape (overlapping rounded squares) -->
+    <g id="sunburst-shape">
+      <rect x="86" y="86" width="340" height="340" rx="44" />
+      <rect x="86" y="86" width="340" height="340" rx="44" transform="rotate(45 256 256)" />
+    </g>
+
+    <!-- Clip path for sunburst shading -->
+    <clipPath id="sunburst-clip">
+      <use href="#sunburst-shape" />
+    </clipPath>
+
+    <!-- Clip path for face circle shading -->
+    <clipPath id="face-clip">
+      <circle cx="256" cy="256" r="162" />
+    </clipPath>
+  </defs>
+
+  <!-- 1. Outer Sparkle Ray Dashes -->
+  <g id="sparkle-rays" stroke="#F9E873" stroke-width="14" stroke-linecap="round">
+    <line x1="339.42" y1="54.59" x2="350.91" y2="26.88" />
+    <line x1="457.41" y1="172.58" x2="485.12" y2="161.09" />
+    <line x1="457.41" y1="339.42" x2="485.12" y2="350.91" />
+    <line x1="339.42" y1="457.41" x2="350.91" y2="485.12" />
+    <line x1="172.58" y1="457.41" x2="161.09" y2="485.12" />
+    <line x1="54.59" y1="339.42" x2="26.88" y2="350.91" />
+    <line x1="54.59" y1="172.58" x2="26.88" y2="161.09" />
+    <line x1="172.58" y1="54.59" x2="161.09" y2="26.88" />
+  </g>
+
+  <!-- 2. Orange Sunburst Body -->
+  <g id="sunburst-body" fill="#F59F27">
+    <use href="#sunburst-shape" />
+  </g>
+
+  <!-- Sunburst Bottom-Right Shadow Layer -->
+  <g clip-path="url(#sunburst-clip)">
+    <path d="M 80 320 C 140 430, 240 465, 360 445 C 440 425, 480 330, 500 230 L 520 520 L 0 520 Z" fill="#D77317" />
+  </g>
+
+  <!-- 3. Central Sun Face Base -->
+  <circle cx="256" cy="256" r="162" fill="#FDE473" />
+
+  <!-- 4. Face Highlight (Top-Left Rim) -->
+  <g clip-path="url(#face-clip)">
+    <path d="M 100 300 A 162 162 0 0 1 365 145 C 320 115, 230 110, 160 165 C 115 205, 95 255, 100 300 Z" fill="#FEF49C" />
+  </g>
+
+  <!-- 5. Rosy Blush Cheeks -->
+  <g id="blush-cheeks" fill="#EB879D">
+    <ellipse cx="152" cy="246" rx="38" ry="34" />
+    <ellipse cx="360" cy="246" rx="38" ry="34" />
+  </g>
+
+  <!-- 6. Facial Features (Eyes & Smile) -->
+  <g id="facial-features" stroke="#364353" fill="none" stroke-linecap="round">
+    <!-- Left Eye -->
+    <path d="M 150 206 Q 174 178 198 206" stroke-width="19" />
+    <!-- Right Eye -->
+    <path d="M 314 206 Q 338 178 362 206" stroke-width="19" />
+    <!-- Happy Smile -->
+    <path d="M 234 229 Q 256 247 278 229" stroke-width="15" />
+  </g>
+</svg>
