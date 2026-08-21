@@ -27,13 +27,13 @@ const StarBackground = () => {
     generateStars();
     generateMeteors();
 
-    const handldeResize = () => {
+    const handleResize = () => {
       generateStars();
     };
 
-    window.addEventListener('resize', handldeResize)
+    window.addEventListener('resize', handleResize)
 
-    return ()=>window.removeEventListener('resize', handldeResize);
+    return ()=>window.removeEventListener('resize', handleResize);
 
   }, []);
 
