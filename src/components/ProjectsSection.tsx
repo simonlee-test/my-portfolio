@@ -1,11 +1,4 @@
-import {
-  ArrowRight,
-  ExternalLink,
-  FolderGit,
-  GitBranch,
-  GitBranchIcon,
-} from "lucide-react";
-import React from "react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 interface project {

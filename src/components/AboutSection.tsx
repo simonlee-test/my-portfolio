@@ -1,5 +1,4 @@
 import { Briefcase, Code, User } from "lucide-react";
-import React from "react";
 
 const AboutSection = () => {
   return (
