@@ -1,5 +1,5 @@
-import { WineOff } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 // id, size, x, y, opacity, animationDuration
 interface CelestialBody {
@@ -10,7 +10,7 @@ interface CelestialBody {
   animationDuration: number;
 }
 
-interface Star extends CelestialBody{
+interface Star extends CelestialBody {
   opacity: number;
 }
 
@@ -18,12 +18,14 @@ interface Meteor extends CelestialBody {
   delay: number;
 }
 
-
 const StarBackground = () => {
+  const { isDarkMode } = useTheme();
   const [stars, setStars] = useState<Star[]>([]);
   const [meteors, setMeteors] = useState<Meteor[]>([]);
 
   useEffect(() => {
+    if (!isDarkMode) return;
+
     generateStars();
     generateMeteors();
 
@@ -31,11 +33,10 @@ const StarBackground = () => {
       generateStars();
     };
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize);
 
-    return ()=>window.removeEventListener('resize', handleResize);
-
-  }, []);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isDarkMode]);
 
   
   const generateStars = () => {
@@ -76,6 +77,8 @@ const StarBackground = () => {
 
     setMeteors(newMeteors);
   };
+
+  if (!isDarkMode) return null;
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
