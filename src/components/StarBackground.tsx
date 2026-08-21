@@ -38,8 +38,10 @@ const StarBackground = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [isDarkMode]);
 
-  
+
   const generateStars = () => {
+    if (stars.length) return;
+    
     const numberOfStars: number = Math.floor(
       (window.innerWidth * window.innerHeight) / 10000,
     );
@@ -61,9 +63,11 @@ const StarBackground = () => {
   };
 
   const generateMeteors = () => {
+    if (meteors.length) return;
+
     const numberOfMeteors = 4;
     const newMeteors = [];
-
+    
     for (let i = 0; i < numberOfMeteors; i++) {
       newMeteors.push({
         id: i,
